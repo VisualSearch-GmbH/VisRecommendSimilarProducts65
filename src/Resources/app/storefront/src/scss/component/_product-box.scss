@@ -1,0 +1,15 @@
+.vis-recommend-similar-product {
+  .product-image-wrapper {
+    height: 340px;
+  }
+
+  .product-image {
+    max-height: 340px;
+  }
+
+  .product-variant-characteristics,
+  .product-price-unit,
+  .product-cheapest-price {
+    display: none;
+  }
+}

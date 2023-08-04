@@ -1,0 +1,16 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-product-slider.html.twig' %}
+
+{% block element_product_slider_inner_item %}
+    {% set visRecommendSimilarSlider = config('VisRecommendSimilarProducts.config.cross') %}
+
+    {% if item.crossSelling.translated.name is same as(visRecommendSimilarSlider) %}
+        <div class="product-slider-item vis-recommend-similar-product">
+            {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
+                'layout': 'minimal',
+                'displayMode': 'contain'
+            } %}
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
