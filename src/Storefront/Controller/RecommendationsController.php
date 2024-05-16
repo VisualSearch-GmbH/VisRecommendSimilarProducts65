@@ -18,14 +18,12 @@ use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Vis\RecommendSimilarProducts\Util\ApiRequest;
 use Vis\RecommendSimilarProducts\Util\SwHosts;
 use Vis\RecommendSimilarProducts\Util\SwRepoUtils;
 
-/**
- * @Route(defaults={"_routeScope"={"api"}})
- */
+#[Route(defaults: ['_routeScope' => ['api']])]
 class RecommendationsController extends AbstractController
 {
     /**
@@ -38,9 +36,7 @@ class RecommendationsController extends AbstractController
         $this->systemConfigService = $systemConfigService;
     }
 
-    /**
-     * @Route("/api/_action/vis/sim/delete_cross", name="api.action.vis.sim.delete_cross", methods={"POST"})
-     */
+    #[Route(path: '/api/_action/vis/sim/delete_cross', name: 'api.action.vis.sim.delete_cross', methods: ['POST'])]
     public function deleteCrossSellings(Request $request, Context $context): JsonResponse
     {
         // Encode json parameters
@@ -56,9 +52,7 @@ class RecommendationsController extends AbstractController
         return new JsonResponse(["code" => 200, "message" => "Info VisRecommendSimilarProducts: cross-sellings deleted"]);
     }
 
-    /**
-     * @Route("/api/_action/vis/sim/status_cross", name="api.action.vis.sim.status_cross", methods={"POST"})
-     */
+    #[Route(path: '/api/_action/vis/sim/status_cross', name: 'api.action.vis.sim.status_cross', methods: ['POST'])]
     public function statusCrossSellings(Request $request, Context $context): JsonResponse
     {
         $name = $this->systemConfigService->get('VisRecommendSimilarProducts.config.cross');
@@ -89,9 +83,7 @@ class RecommendationsController extends AbstractController
         }
     }
 
-    /**
-     * @Route("/api/_action/vis/sim/status_clicks", name="api.action.vis.sim.status_clicks", methods={"POST"})
-     */
+    #[Route(path: '/api/_action/vis/sim/status_clicks', name: 'api.action.vis.sim.status_clicks', methods: ['POST'])]
     public function statusClicks(Request $request, Context $context): JsonResponse
     {
         $loggingRepository = $this->container->get('recommend_similar_products_clicks.repository');
@@ -114,9 +106,7 @@ class RecommendationsController extends AbstractController
         return new JsonResponse(["code" => 200, "message" => $data]);
     }
 
-    /**
-     * @Route("/api/_action/vis/sim/status_logs", name="api.action.vis.sim.status_logs", methods={"POST"})
-     */
+    #[Route(path: '/api/_action/vis/sim/status_logs', name: 'api.action.vis.sim.status_logs', methods: ['POST'])]
     public function statusLogs(Request $request, Context $context): JsonResponse
     {
         $loggingRepository = $this->container->get('recommend_similar_products_logs.repository');
@@ -139,9 +129,7 @@ class RecommendationsController extends AbstractController
         return new JsonResponse(["code" => 200, "message" => $data]);
     }
 
-    /**
-     * @Route("/api/_action/vis/sim/status_orders", name="api.action.vis.sim.status_orders", methods={"POST"})
-     */
+    #[Route(path: '/api/_action/vis/sim/status_orders', name: 'api.action.vis.sim.status_orders', methods: ['POST'])]
     public function statusOrders(Request $request, Context $context): JsonResponse
     {
         $loggingRepository = $this->container->get('order.repository');
@@ -164,9 +152,7 @@ class RecommendationsController extends AbstractController
         return new JsonResponse(["code" => 200, "message" => $data]);
     }
 
-    /**
-     * @Route("/api/_action/vis/sim/status_version", name="api.action.vis.sim.status_version", methods={"POST"})
-     */
+    #[Route(path: '/api/_action/vis/sim/status_version', name: 'api.action.vis.sim.status_version', methods: ['POST'])]
     public function statusVersion(Request $request, Context $context): JsonResponse
     {
         $repository = $this->container->get('plugin.repository');
@@ -183,9 +169,7 @@ class RecommendationsController extends AbstractController
         return new JsonResponse(["code" => 200, "message" => "Info VisRecommendSimilarProducts: version unknown"]);
     }
 
-    /**
-     * @Route("/api/_action/vis/sim/update_cross", name="api.action.vis.sim.update_cross", methods={"POST"})
-     */
+    #[Route(path: '/api/_action/vis/sim/update_cross', name: 'api.action.vis.sim.update_cross', methods: ['POST'])]
     public function updateCrossSellings(Request $request, Context $context): JsonResponse
     {
         // Encode json parameters
@@ -244,9 +228,7 @@ class RecommendationsController extends AbstractController
         return new JsonResponse(["code" => 200, "message" => "Info VisRecommendSimilarProducts: cross-sellings updated successfully"]);
     }
 
-    /**
-     * @Route("/api/_action/vis/sim/update_auto", name="api.action.vis.sim.update_auto", methods={"POST"})
-     */
+    #[Route(path: '/api/_action/vis/sim/update_auto', name: 'api.action.vis.sim.update_auto', methods: ['POST'])]
     public function updateAuto(Request $request, Context $context): JsonResponse
     {
         // if the plugin config checkbox is not checked then the plugin is not active
@@ -311,9 +293,7 @@ class RecommendationsController extends AbstractController
         return new JsonResponse(["code" => 200, "message" => "Info VisRecommendSimilarProducts: " . $message]);
     }
 
-    /**
-     * @Route("/api/_action/vis/sim/update_categories", name="api.action.vis.sim.update_categories", methods={"POST"})
-     */
+    #[Route(path: '/api/_action/vis/sim/update_categories', name: 'api.action.vis.sim.update_categories', methods: ['POST'])]
     public function updateCategories(Request $request, Context $context): JsonResponse
     {
         // get product repository
@@ -348,9 +328,7 @@ class RecommendationsController extends AbstractController
         return new JsonResponse(["code" => 200, "message" => "Info VisRecommendSimilarProducts: " . $message]);
     }
 
-    /**
-     * @Route("/api/_action/vis/sim/update_one_category", name="api.action.vis.sim.update_one_category", methods={"POST"})
-     */
+    #[Route(path: '/api/_action/vis/sim/update_one_category', name: 'api.action.vis.sim.update_one_category', methods: ['POST'])]
     public function updateOneCategory(Request $request, Context $context): JsonResponse
     {
         // get name and product repository
@@ -393,9 +371,7 @@ class RecommendationsController extends AbstractController
         return new JsonResponse(["code" => 200, "message" => "Info VisRecommendSimilarProducts: " . $message]);
     }
 
-    /**
-     * @Route("/api/_action/vis/sim/api_key_verify", name="api.action.vis.sim.api_key_verify", methods={"POST"})
-     */
+    #[Route(path: '/api/_action/vis/sim/api_key_verify', name: 'api.action.vis.sim.api_key_verify', methods: ['POST'])]
     public function apiKeyVerify(Request $request, Context $context): JsonResponse
     {
         // verify api key

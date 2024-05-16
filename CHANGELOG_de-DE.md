@@ -1,5 +1,5 @@
-# 3.0.0
-- Version für SW 6.5.3.3
+# 3.0.1
+- Update für Shopware Version 6.6
 
 # 2.1.7
 - Bug mit Kategorien fixed

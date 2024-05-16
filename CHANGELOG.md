@@ -1,5 +1,5 @@
-# 3.0.0
-- Version for SW 6.5.3.3
+# 3.0.1
+- Update to version 6.6
 
 # 2.1.7
 - Bug with categories fixed
